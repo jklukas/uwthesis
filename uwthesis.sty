@@ -1,0 +1,139 @@
+% uwthesis.sty  University of Wisconsin theses/dissertations
+% based on pwasu.sty
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{pwuw}[2011/06/08 v0.1 UW thesis style]
+%% Only works with the memoir class!!!!!!!!!!!!!!!
+% \@ifclassloaded{memoir}{\let\endpwuw\relax}{\let\endpwuw\endinput
+%   \PackageError{pwuw}{The pwuw package only works with the memoir class}{\@ehd}}
+% \endpwuw
+
+%%%% Set up the page using memoir class commands
+%% Set the upper and lower margins (automatically adjust the textblock)
+%% Upper margin needs to be larger than 1in to allow room for the page number
+\setulmarginsandblock{1.5in}{1in}{*}
+%% Left margin is a little larger to allow room for binding
+%% Set the left and right margins (automatically adjust the textblock)
+\setlrmarginsandblock{1.5in}{1in}{*}
+%% Set the distance between the top of the page and the top of the header
+%% The first argument is headdrop (distance from top of page to top of header)
+\setheaderspaces{1in}{*}{*}
+%% Implement the above changes
+\checkandfixthelayout
+
+%% for REFERENCE section
+\let\oldbib\bibliography
+\renewcommand*{\bibliography}{\SingleSpace\oldbib}
+\setlength{\bibitemsep}{\onelineskip}
+
+%% for the title page and approval page. 
+\newcommand{\settitle}[1]{\def\uwtitle{#1}}  % your title
+\newcommand{\setauthor}[1]{\def\uwauthor{#1}} % you
+\newcommand{\setdepartment}[1]{\def\uwdepartment{#1}}  % your title
+\newcommand{\masters}{\def\uwdegree{Master of Arts}}
+\newcommand{\doctors}{\def\uwdegree{Doctor of Philosophy}}
+\newcommand{\setgraddate}[1]{\def\uwgraddate{#1}} % graduation date
+\newcommand{\setdefensedate}[1]{\def\uwdefensedate{#1}} % defense date
+\newcommand{\setadvisor}[1]{\def\uwadvisor{#1}} % thesis advisor
+\newcommand{\setfoca}[1]{\def\uwfoca{#1}} % Final Oral Committee member A
+\newcommand{\setfocb}[1]{\def\uwfocb{#1}} % Final Oral Committee member B
+\newcommand{\setfocc}[1]{\def\uwfocc{#1}} % Final Oral Committee member C
+\newcommand{\setfocd}[1]{\def\uwfocd{#1}} % Final Oral Committee member D
+\newcommand{\setfoce}[1]{\def\uwfoce{#1}} % Final Oral Committee member E
+\newcommand{\setfocf}[1]{\def\uwfocf{#1}} % Final Oral Committee member F
+\setfocf{\phantom{abcdefg}} % If there are only five committee members
+
+% Change this part for your own title
+
+\settitle{An Incredible Piece of Work}
+
+% Change this part for you name
+\setauthor{A.~N.~Author}
+
+%%%% comment out the part you don't need using '%' and free the part you need
+
+%\masters  % going for a Masters degree
+\doctors % going for a PhD
+
+% set your freedom date
+\setgraddate{May 2021}
+
+% set your advisor
+\setadvisor{Associate Professor Cheer~E.~Place}
+
+% put your biographical like this
+% \begin{biosketch} I was kissed by a donky when I was 5.... \end
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%% typesets the TITLE page
+\newcommand{\mybox}[2]{\makebox[0.4\textwidth][r]{#1} $\cdot$ \makebox[0.4\textwidth][l]{#2}}
+\newcommand{\thetitlepage}{%
+  \thispagestyle{empty}
+  % \vphantom{} %needed to register \vspace at the top of a page
+  % \vspace{1in}
+  {\center 
+    {\Large \sc \uwtitle}\\
+    \vfill
+    \emph{by} \\ 
+    \uwauthor \\
+    \vfill
+    A dissertation submitted in partial fulfillment of \\
+    the requirements for the degree of \\
+    \vfill
+    \uwdegree \\
+    (\uwdepartment) \\
+    \vfill
+    \emph{at the} \\
+    % \vfill
+    \textsc{University of Wisconsin -- Madison}\\
+    \uwgraddate \\
+    \vfill
+    \noindent Defended on \uwdefensedate{}\\ Dissertation approved by the following members of the Final Oral Committee: \\
+    % \noindent To be defended on \uwdefensedate{} for approval by the Final Oral Committee: \\
+    \mybox{Matthew Herndon}{Associate Professor of Physics} \\
+    \mybox{Sridhara Dasu}{Professor of Physics} \\
+    \mybox{Wesley Smith}{Professor of Physics} \\
+    \mybox{Lisa Everett}{Associate Professor of Physics} \\
+    \mybox{Robert Matthieu}{Professor of Astronomy} \\
+    \vspace{0.5in}
+  }
+  \clearpage
+}
+
+\newcommand{\theumiabstract}[1]{%
+\clearpage
+\savepagenumber
+\thispagestyle{empty}
+{\center \Large
+\textsc{\uwtitle} \\
+}
+{\center
+\uwauthor \\
+Under the supervision of \uwadvisor \\
+At the University of Wisconsin--Madison \\
+}
+
+\vspace{\baselineskip}
+
+#1
+
+\clearpage
+\restorepagenumber
+}
+
+
+% myheadings uses a custom heading, which I'm setting to blank
+\pagestyle{myheadings}
+\markboth{}{}
+
+% By default, the first page of a chapter has a special style, but
+% this circumvents this behavior
+\aliaspagestyle{chapter}{myheadings}
+
+% Set memoir's DoubleSpacing
+\DoubleSpacing
+
+%%%%%%%%%%%%%%% end of *.sty file
+\endinput

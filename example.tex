@@ -1,0 +1,72 @@
+\documentclass[oneside, letterpaper, 12pt, oldfontcommands]{memoir}
+
+\usepackage{uwthesis}
+
+\settitle{An Awesome Thesis}
+\setauthor{Jeffrey Klukas}
+\setdepartment{Physics}
+\doctors % going for a PhD
+\setgraddate{2012}
+\setdefensedate{2 May 2012}
+\setadvisor{Associate Professor Matthew Herndon}
+\setfoca{Matthew Herndon, Associate Professor of Physics}
+\setfocb{Sridhara Dasu, Professor of Physics}
+\setfocc{Wesley Smith, Professor of Physics}
+\setfocd{Lisa Everett, Associate Professor of Physics}
+\setfoce{Iam A.~Professor, Professor of Astronomy}
+
+% No more than 350 words!
+\newcommand{\myabstract}{An awesome study of important things is presented.}
+
+
+
+\begin{document}
+
+% Tell the memoir class to set up lowercase roman for pagination, etc.
+\frontmatter
+
+%%%% Uncomment this to create a UMI abstract page.
+%%%% If you are submitting electronically, this page is unnecessary.
+% \theumiabstract{%
+% \myabstract
+% }
+
+% The title page
+\thetitlepage
+\clearpage
+
+% The optional copyright page
+\thispagestyle{empty}
+\vfill
+\phantom{
+Copyright Ima Student 2012
+}
+
+% These should not be counted, so we reset the counter now.
+\cleardoublepage
+\setcounter{page}{1}
+
+% An abstract may be required by your department.
+\section{Abstract}
+\myabstract
+\clearpage
+
+% Acknowledgements go here if you want to include them.
+\section{Acknowledgements}
+This is where any acknowledgements would go.
+\clearpage
+
+\maxtocdepth{subsection}
+\tableofcontents % the * means that there isn't an entry for the TOC itself
+% \clearpage
+% \listoffigures  % if you have any figures
+% \clearpage
+% \listoftables   % if you have any tables
+
+% Tell the memoir class to set up normal pagination, etc.
+\mainmatter
+
+\chapter{Introduction}
+And this is where your hard work goes.
+
+\end{document}
