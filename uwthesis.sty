@@ -1,4 +1,4 @@
-% uwthesis.sty  University of Wisconsin theses/dissertations
+% uwthesis.sty  University of Wisconsin--Madison theses/dissertations
 % based on pwasu.sty
 
 \NeedsTeXFormat{LaTeX2e}
@@ -8,7 +8,10 @@
 %   \PackageError{pwuw}{The pwuw package only works with the memoir class}{\@ehd}}
 % \endpwuw
 
-%%%% Set up the page using memoir class commands
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% MARGINS (relying on functions from the memoir class)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %% Set the upper and lower margins (automatically adjust the textblock)
 %% Upper margin needs to be larger than 1in to allow room for the page number
 \setulmarginsandblock{1.5in}{1in}{*}
@@ -21,12 +24,13 @@
 %% Implement the above changes
 \checkandfixthelayout
 
-%% for REFERENCE section
-\let\oldbib\bibliography
-\renewcommand*{\bibliography}{\SingleSpace\oldbib}
-\setlength{\bibitemsep}{\onelineskip}
 
-%% for the title page and approval page. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% INTERFACE (variables for the user to set)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% For the title/committee page
 \newcommand{\settitle}[1]{\def\uwtitle{#1}}  % your title
 \newcommand{\setauthor}[1]{\def\uwauthor{#1}} % you
 \newcommand{\setdepartment}[1]{\def\uwdepartment{#1}}  % your title
@@ -35,44 +39,49 @@
 \newcommand{\setgraddate}[1]{\def\uwgraddate{#1}} % graduation date
 \newcommand{\setdefensedate}[1]{\def\uwdefensedate{#1}} % defense date
 \newcommand{\setadvisor}[1]{\def\uwadvisor{#1}} % thesis advisor
-\newcommand{\setfoca}[1]{\def\uwfoca{#1}} % Final Oral Committee member A
-\newcommand{\setfocb}[1]{\def\uwfocb{#1}} % Final Oral Committee member B
-\newcommand{\setfocc}[1]{\def\uwfocc{#1}} % Final Oral Committee member C
-\newcommand{\setfocd}[1]{\def\uwfocd{#1}} % Final Oral Committee member D
-\newcommand{\setfoce}[1]{\def\uwfoce{#1}} % Final Oral Committee member E
-\newcommand{\setfocf}[1]{\def\uwfocf{#1}} % Final Oral Committee member F
-\setfocf{\phantom{abcdefg}} % If there are only five committee members
 
-% Change this part for your own title
+%% Members of the Final Oral Committee
+\newcommand{\setfoca}[2]{\def\uwfoca{#1}\def\uwranka{#2}}
+\newcommand{\setfocb}[2]{\def\uwfocb{#1}\def\uwrankb{#2}}
+\newcommand{\setfocc}[2]{\def\uwfocc{#1}\def\uwrankc{#2}}
+\newcommand{\setfocd}[2]{\def\uwfocd{#1}\def\uwrankd{#2}}
+\newcommand{\setfoce}[2]{\def\uwfoce{#1}\def\uwranke{#2}}
+% \newcommand{\setfocb}[1]{\def\uwfocb{#1}} % Final Oral Committee member B
+% \newcommand{\setfocc}[1]{\def\uwfocc{#1}} % Final Oral Committee member C
+% \newcommand{\setfocd}[1]{\def\uwfocd{#1}} % Final Oral Committee member D
+% \newcommand{\setfoce}[1]{\def\uwfoce{#1}} % Final Oral Committee member E
+% \newcommand{\setfocf}[1]{\def\uwfocf{#1}} % Final Oral Committee member F
+% \setfocf{\phantom{abcdefg}} % If there are only five committee members
 
+%% defaults
 \settitle{An Incredible Piece of Work}
-
-% Change this part for you name
 \setauthor{A.~N.~Author}
-
-%%%% comment out the part you don't need using '%' and free the part you need
-
-%\masters  % going for a Masters degree
-\doctors % going for a PhD
-
-% set your freedom date
+\doctors % going for a Ph.D.
 \setgraddate{May 2021}
-
-% set your advisor
 \setadvisor{Associate Professor Cheer~E.~Place}
 
-% put your biographical like this
-% \begin{biosketch} I was kissed by a donky when I was 5.... \end
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-%%% typesets the TITLE page
-\newcommand{\mybox}[2]{\makebox[0.4\textwidth][r]{#1} $\cdot$ \makebox[0.4\textwidth][l]{#2}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% REFERENCES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Make the reference section single-spaced
+\let\oldbib\bibliography
+\renewcommand*{\bibliography}{\SingleSpace\oldbib}
+\setlength{\bibitemsep}{\onelineskip}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% TITLE/COMMITTEE page
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Command to determine how the members of the committee are formatted
+\newcommand{\boxfoc}[2]{\makebox[0.4\textwidth][r]{#1} $\cdot$ \makebox[0.4\textwidth][l]{#2}}
+
+%% Command to create the title page
 \newcommand{\thetitlepage}{%
   \thispagestyle{empty}
-  % \vphantom{} %needed to register \vspace at the top of a page
-  % \vspace{1in}
   {\center 
     {\Large \sc \uwtitle}\\
     \vfill
@@ -92,48 +101,82 @@
     \vfill
     \noindent Defended on \uwdefensedate{}\\ Dissertation approved by the following members of the Final Oral Committee: \\
     % \noindent To be defended on \uwdefensedate{} for approval by the Final Oral Committee: \\
-    \mybox{Matthew Herndon}{Associate Professor of Physics} \\
-    \mybox{Sridhara Dasu}{Professor of Physics} \\
-    \mybox{Wesley Smith}{Professor of Physics} \\
-    \mybox{Lisa Everett}{Associate Professor of Physics} \\
-    \mybox{Robert Matthieu}{Professor of Astronomy} \\
+    \boxfoc{\uwfoca}{\uwranka} \\
+    \boxfoc{\uwfocb}{\uwrankb} \\
+    \boxfoc{\uwfocc}{\uwrankc} \\
+    \boxfoc{\uwfocd}{\uwrankd} \\
+    \boxfoc{\uwfoce}{\uwranke} \\
     \vspace{0.5in}
   }
   \clearpage
 }
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% COPYRIGHT Page
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% If you're registering copyright
+\newcommand{\thecopyrightpage}{%
+  \thispagestyle{empty}
+  \center
+  \phantom{Phantom Text}
+  \vfill
+  \copyright{} Copyright \uwauthor{} \uwgraddate{}\\
+  All Rights Reserved
+  \vspace{1in}
+}
+
+% If you don't want to pay the copyright fee
+\newcommand{\theblankcopyrightpage}{%
+  \thispagestyle{empty}
+  \vfill
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% UMI ABSTRACT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \newcommand{\theumiabstract}[1]{%
-\clearpage
-\savepagenumber
-\thispagestyle{empty}
-{\center \Large
-\textsc{\uwtitle} \\
+  \clearpage
+  \savepagenumber
+  \thispagestyle{empty}
+  {\center \Large
+    \textsc{\uwtitle} \\
+  }
+  {\center
+    \uwauthor \\
+    Under the supervision of \uwadvisor \\
+    At the University of Wisconsin--Madison \\
+  }
+
+  \vspace{\baselineskip}
+
+  #1
+
+  \clearpage
+  \restorepagenumber
 }
-{\center
-\uwauthor \\
-Under the supervision of \uwadvisor \\
-At the University of Wisconsin--Madison \\
-}
-
-\vspace{\baselineskip}
-
-#1
-
-\clearpage
-\restorepagenumber
-}
 
 
-% myheadings uses a custom heading, which I'm setting to blank
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Other STYLE stuff
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% myheadings is used to define custom content for the headings
+% We set headings on both odd and even pages blank, as required by UW
 \pagestyle{myheadings}
 \markboth{}{}
 
-% By default, the first page of a chapter has a special style, but
-% this circumvents this behavior
+% By default, the first page of a chapter has a special style, 
+% so we need to explicitly set the chapter style to myheadings as well
 \aliaspagestyle{chapter}{myheadings}
 
 % Set memoir's DoubleSpacing
 \DoubleSpacing
+
+
 
 %%%%%%%%%%%%%%% end of *.sty file
 \endinput

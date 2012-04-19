@@ -1,24 +1,36 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Preamble
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%% The uwthesis.sty file relies on the memoir class!
+%%%% You should be using the memoir class anyway; it makes life easier:
+%%%% http://www.ctan.org/tex-archive/macros/latex/contrib/memoir/
 \documentclass[oneside, letterpaper, 12pt, oldfontcommands]{memoir}
 
+%%%% Import uwthesis.sty to get official formatting, then set your variables.
 \usepackage{uwthesis}
-
 \settitle{An Awesome Thesis}
 \setauthor{Jeffrey Klukas}
 \setdepartment{Physics}
 \doctors % going for a PhD
+%\masters  % going for a Masters degree
 \setgraddate{2012}
 \setdefensedate{2 May 2012}
 \setadvisor{Associate Professor Matthew Herndon}
-\setfoca{Matthew Herndon, Associate Professor of Physics}
-\setfocb{Sridhara Dasu, Professor of Physics}
-\setfocc{Wesley Smith, Professor of Physics}
-\setfocd{Lisa Everett, Associate Professor of Physics}
-\setfoce{Iam A.~Professor, Professor of Astronomy}
+\setfoca{George Washington}{Associate Professor of Physics}
+\setfocb{John Adams}{Professor of Physics}
+\setfocc{Thomas Jefferson}{Assistant Professor of Physics}
+\setfocd{James Madison}{Professor of Physics}
+\setfoce{James Monroe}{Professor of Materials Engineering}
 
-% No more than 350 words!
-\newcommand{\myabstract}{An awesome study of important things is presented.}
+%%%% Define your abstract here.
+\newcommand{\myabstract}{%
+An awesome study of important things is presented.
+}
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
 
@@ -26,7 +38,7 @@
 \frontmatter
 
 %%%% Uncomment this to create a UMI abstract page.
-%%%% If you are submitting electronically, this page is unnecessary.
+%%%% If you are submitting electronically, however, this page is unnecessary.
 % \theumiabstract{%
 % \myabstract
 % }
@@ -35,12 +47,10 @@
 \thetitlepage
 \clearpage
 
-% The optional copyright page
-\thispagestyle{empty}
-\vfill
-\phantom{
-Copyright Ima Student 2012
-}
+% The copyright page, or a blank page if you don't want to pay the fee
+\thecopyrightpage
+%\theblankcopyrightpage
+\clearpage
 
 % These should not be counted, so we reset the counter now.
 \cleardoublepage
@@ -56,6 +66,7 @@ Copyright Ima Student 2012
 This is where any acknowledgements would go.
 \clearpage
 
+% Table of contents
 \maxtocdepth{subsection}
 \tableofcontents % the * means that there isn't an entry for the TOC itself
 % \clearpage
@@ -63,7 +74,7 @@ This is where any acknowledgements would go.
 % \clearpage
 % \listoftables   % if you have any tables
 
-% Tell the memoir class to set up normal pagination, etc.
+% Tell the memoir class to set up normal pagination, etc. for the main doc
 \mainmatter
 
 \chapter{Introduction}
