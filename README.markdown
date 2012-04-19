@@ -18,6 +18,7 @@ If you want to change how anything looks, simply modify the `uwthesis.sty` file,
 ## Resources
 
 This style file is designed to conform to all UW--Madison regulations as laid out in the following documents:
+
 * [The Three D's: Deadlines, Defending, and Depositing Your Ph.D. Dissertation](http://www.grad.wisc.edu/education/completedegree/ddd.html)
 * [Guidelines for Electronic Deposit of PhD Dissertations](http://www.grad.wisc.edu/education/completedegree/etd.pdf)
 * [A Guide to Preparing Your Doctoral Dissertation](http://www.grad.wisc.edu/education/completedegree/pguide.html)
