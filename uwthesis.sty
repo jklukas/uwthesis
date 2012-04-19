@@ -46,12 +46,7 @@
 \newcommand{\setfocc}[2]{\def\uwfocc{#1}\def\uwrankc{#2}}
 \newcommand{\setfocd}[2]{\def\uwfocd{#1}\def\uwrankd{#2}}
 \newcommand{\setfoce}[2]{\def\uwfoce{#1}\def\uwranke{#2}}
-% \newcommand{\setfocb}[1]{\def\uwfocb{#1}} % Final Oral Committee member B
-% \newcommand{\setfocc}[1]{\def\uwfocc{#1}} % Final Oral Committee member C
-% \newcommand{\setfocd}[1]{\def\uwfocd{#1}} % Final Oral Committee member D
-% \newcommand{\setfoce}[1]{\def\uwfoce{#1}} % Final Oral Committee member E
-% \newcommand{\setfocf}[1]{\def\uwfocf{#1}} % Final Oral Committee member F
-% \setfocf{\phantom{abcdefg}} % If there are only five committee members
+\newcommand{\setfocf}[2]{\def\uwfocf{#1}\def\uwrankf{#2}}
 
 %% defaults
 \settitle{An Incredible Piece of Work}
@@ -82,7 +77,7 @@
 %% Command to create the title page
 \newcommand{\thetitlepage}{%
   \thispagestyle{empty}
-  {\center 
+  \begin{center}
     {\Large \sc \uwtitle}\\
     \vfill
     \emph{by} \\ 
@@ -106,8 +101,12 @@
     \boxfoc{\uwfocc}{\uwrankc} \\
     \boxfoc{\uwfocd}{\uwrankd} \\
     \boxfoc{\uwfoce}{\uwranke} \\
-    \vspace{0.5in}
-  }
+    %% Add the sixth committee member if it has been defined
+    \ifx\uwfocf\undefined {} 
+      \else \boxfoc{\uwfocf}{\uwrankf} \\
+    \fi
+    \vspace{0.5in}    
+  \end{center}
   \clearpage
 }
 
@@ -118,17 +117,19 @@
 % If you're registering copyright
 \newcommand{\thecopyrightpage}{%
   \thispagestyle{empty}
-  \center
-  \phantom{Phantom Text}
-  \vfill
-  \copyright{} Copyright \uwauthor{} \uwgraddate{}\\
-  All Rights Reserved
-  \vspace{1in}
+  \begin{center}
+    \phantom{Phantom Text}
+    \vfill
+    \copyright{} Copyright \uwauthor{} \uwgraddate{}\\
+    All Rights Reserved
+    \vspace{1in}
+  \end{center}
 }
 
 % If you don't want to pay the copyright fee
 \newcommand{\theblankcopyrightpage}{%
   \thispagestyle{empty}
+  \phantom{Phantom Text}
   \vfill
 }
 
