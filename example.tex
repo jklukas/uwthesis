@@ -44,19 +44,17 @@
 
 %%%% Uncomment this to create a UMI abstract page.
 %%%% If you are submitting electronically, however, this page is unnecessary.
-\theumiabstract
+% \theumiabstract
 
 % The title page
 \thetitlepage
 \clearpage
 
-% The copyright page, or a blank page if you don't want to pay the fee
+% The copyright page, if you want to pay the fee and register copyright.
 \thecopyrightpage
-%\theblankcopyrightpage
-\clearpage
-
-% These should not be counted, so we reset the counter now.
 \cleardoublepage
+
+% These above pages should not be counted, so we reset the counter to 1.
 \setcounter{page}{1}
 
 % An abstract may be required by your department.
@@ -71,7 +69,7 @@ This is where any acknowledgements would go.
 
 % Table of contents
 \maxtocdepth{subsection}
-\tableofcontents % the * means that there isn't an entry for the TOC itself
+\tableofcontents* % the * means that there isn't an entry for the TOC itself
 % \clearpage
 % \listoffigures  % if you have any figures
 % \clearpage
