@@ -39,6 +39,7 @@
 \newcommand{\setgraddate}[1]{\def\uwgraddate{#1}} % graduation date
 \newcommand{\setdefensedate}[1]{\def\uwdefensedate{#1}} % defense date
 \newcommand{\setadvisor}[1]{\def\uwadvisor{#1}} % thesis advisor
+\newcommand{\setabstract}[1]{\def\uwabstract{#1}} % abstract
 
 %% Members of the Final Oral Committee
 \newcommand{\setfoca}[2]{\def\uwfoca{#1}\def\uwranka{#2}}
@@ -118,7 +119,7 @@
 \newcommand{\thecopyrightpage}{%
   \thispagestyle{empty}
   \begin{center}
-    \phantom{Phantom Text}
+    \null
     \vfill
     \copyright{} Copyright \uwauthor{} \uwgraddate{}\\
     All Rights Reserved
@@ -129,7 +130,7 @@
 % If you don't want to pay the copyright fee
 \newcommand{\theblankcopyrightpage}{%
   \thispagestyle{empty}
-  \phantom{Phantom Text}
+  \null
   \vfill
 }
 
@@ -138,22 +139,23 @@
 %%%% UMI ABSTRACT
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newcommand{\theumiabstract}[1]{%
+\newcommand{\theumiabstract}{%
   \clearpage
+
+  %% The UMI abstract is not part of the document, so we skip pagination
   \savepagenumber
   \thispagestyle{empty}
-  {\center \Large
-    \textsc{\uwtitle} \\
-  }
-  {\center
+
+  \begin{center}
+    {\Large \textsc{\uwtitle}} \\
     \uwauthor \\
     Under the supervision of \uwadvisor \\
     At the University of Wisconsin--Madison \\
-  }
+  \end{center}
 
   \vspace{\baselineskip}
 
-  #1
+  \uwabstract
 
   \clearpage
   \restorepagenumber

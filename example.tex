@@ -10,7 +10,7 @@
 %%%% Import uwthesis.sty to get official formatting, then set your variables.
 \usepackage{uwthesis}
 \settitle{An Awesome Thesis}
-\setauthor{Jeffrey Klukas}
+\setauthor{Robert Generic}
 \setdepartment{Physics}
 \doctors % going for a PhD
 %\masters  % going for a Masters degree
@@ -24,10 +24,13 @@
 \setfoce{James Monroe}{Professor of Materials Engineering}
 %% You probably don't have a sixth committee member, but you can add one here.
 %\setfocf{Grover Cleveland}{Professor of Zoology}
-
-%%%% Define your abstract here.
-\newcommand{\myabstract}{%
-An awesome study of important things is presented.
+\setabstract{%
+  An awesome study of important things is presented.  
+  I further describe my project here, but I will not exceed 350 words, 
+  for that is strictly forbidden for the abstract of this document.  
+  If you're submitting online, you can even put symbols 
+  in your abstract and title, but you'll have to find out the HTML 
+  character codes for the various symbols.
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -41,9 +44,7 @@ An awesome study of important things is presented.
 
 %%%% Uncomment this to create a UMI abstract page.
 %%%% If you are submitting electronically, however, this page is unnecessary.
-% \theumiabstract{%
-% \myabstract
-% }
+\theumiabstract
 
 % The title page
 \thetitlepage
@@ -60,8 +61,8 @@ An awesome study of important things is presented.
 
 % An abstract may be required by your department.
 \section{Abstract}
-\myabstract
-\clearpage
+\uwabstract
+\cleardoublepage
 
 % Acknowledgements go here if you want to include them.
 \section{Acknowledgements}
