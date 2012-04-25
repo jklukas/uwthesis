@@ -9,21 +9,25 @@
 
 %%%% Import uwthesis.sty to get official formatting, then set your variables.
 \usepackage{uwthesis}
+
 \settitle{An Awesome Thesis}
 \setauthor{Robert Generic}
 \setdepartment{Physics}
-\doctors % going for a PhD
-%\masters  % going for a Masters degree
+\doctors % or \masters
 \setgraddate{2012}
-\setdefensedate{2 May 2012}
-\setadvisor{Associate Professor Matthew Herndon}
-\setfoca{George Washington}{Associate Professor of Physics}
-\setfocb{John Adams}{Professor of Physics}
-\setfocc{Thomas Jefferson}{Assistant Professor of Physics}
-\setfocd{James Madison}{Professor of Physics}
-\setfoce{James Monroe}{Professor of Materials Engineering}
-%% You probably don't have a sixth committee member, but you can add one here.
-%\setfocf{Grover Cleveland}{Professor of Zoology}
+\setdefensedate{2 May 2012} % or whatever format you want
+
+%%%% Members of the Final Oral Committee (FOC)
+%%%% Give name, rank, and department
+%%%% 
+\setfoca{George Washington}{Associate Professor}{Physics} % <- Your advisor
+\setfocb{John Adams}{Professor}{Physics}
+\setfocc{Thomas Jefferson}{Assistant Professor}{Physics}
+\setfocd{James Madison}{Professor}{Physics}
+\setfoce{James Monroe}{Professor}{Materials Engineering}
+\setfocf{Grover Cleveland}{Professor}{Zoology}
+
+%%%% Your abstract, used for the UMI abstract and in your front matter
 \setabstract{%
   An awesome study of important things is presented.  
   I further describe my project here, but I will not exceed 350 words, 

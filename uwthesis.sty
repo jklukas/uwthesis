@@ -2,7 +2,7 @@
 % based on pwasu.sty
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{pwuw}[2011/06/08 v0.1 UW thesis style]
+\ProvidesPackage{uwthesis}[2012/04/25 v0.1 UW thesis style]
 %% Only works with the memoir class!!!!!!!!!!!!!!!
 % \@ifclassloaded{memoir}{\let\endpwuw\relax}{\let\endpwuw\endinput
 %   \PackageError{pwuw}{The pwuw package only works with the memoir class}{\@ehd}}
@@ -38,23 +38,15 @@
 \newcommand{\doctors}{\def\uwdegree{Doctor of Philosophy}}
 \newcommand{\setgraddate}[1]{\def\uwgraddate{#1}} % graduation date
 \newcommand{\setdefensedate}[1]{\def\uwdefensedate{#1}} % defense date
-\newcommand{\setadvisor}[1]{\def\uwadvisor{#1}} % thesis advisor
 \newcommand{\setabstract}[1]{\def\uwabstract{#1}} % abstract
 
 %% Members of the Final Oral Committee
-\newcommand{\setfoca}[2]{\def\uwfoca{#1}\def\uwranka{#2}}
-\newcommand{\setfocb}[2]{\def\uwfocb{#1}\def\uwrankb{#2}}
-\newcommand{\setfocc}[2]{\def\uwfocc{#1}\def\uwrankc{#2}}
-\newcommand{\setfocd}[2]{\def\uwfocd{#1}\def\uwrankd{#2}}
-\newcommand{\setfoce}[2]{\def\uwfoce{#1}\def\uwranke{#2}}
-\newcommand{\setfocf}[2]{\def\uwfocf{#1}\def\uwrankf{#2}}
-
-%% defaults
-\settitle{An Incredible Piece of Work}
-\setauthor{A.~N.~Author}
-\doctors % going for a Ph.D.
-\setgraddate{May 2021}
-\setadvisor{Associate Professor Cheer~E.~Place}
+\newcommand{\setfoca}[3]{\def\uwfoca{#1}\def\uwranka{#2}\def\uwdepa{#3}}
+\newcommand{\setfocb}[3]{\def\uwfocb{#1}\def\uwrankb{#2}\def\uwdepb{#3}}
+\newcommand{\setfocc}[3]{\def\uwfocc{#1}\def\uwrankc{#2}\def\uwdepc{#3}}
+\newcommand{\setfocd}[3]{\def\uwfocd{#1}\def\uwrankd{#2}\def\uwdepd{#3}}
+\newcommand{\setfoce}[3]{\def\uwfoce{#1}\def\uwranke{#2}\def\uwdepe{#3}}
+\newcommand{\setfocf}[3]{\def\uwfocf{#1}\def\uwrankf{#2}\def\uwdepf{#3}}
 
 
 
@@ -73,7 +65,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% Command to determine how the members of the committee are formatted
-\newcommand{\boxfoc}[2]{\makebox[0.4\textwidth][r]{#1} $\cdot$ \makebox[0.4\textwidth][l]{#2}}
+\newcommand{\boxfoc}[3]{\makebox[0.4\textwidth][r]{#1} $\cdot$ \makebox[0.4\textwidth][l]{#2 of #3}}
 
 %% Command to create the title page
 \newcommand{\thetitlepage}{%
@@ -95,15 +87,23 @@
     \uwgraddate \\
     \vfill
     \noindent Defended on \uwdefensedate{}\\ Dissertation approved by the following members of the Final Oral Committee: \\
-    % \noindent To be defended on \uwdefensedate{} for approval by the Final Oral Committee: \\
-    \boxfoc{\uwfoca}{\uwranka} \\
-    \boxfoc{\uwfocb}{\uwrankb} \\
-    \boxfoc{\uwfocc}{\uwrankc} \\
-    \boxfoc{\uwfocd}{\uwrankd} \\
-    \boxfoc{\uwfoce}{\uwranke} \\
-    %% Add the sixth committee member if it has been defined
+    \ifx\uwfoca\undefined {} 
+      \else \boxfoc{\uwfoca}{\uwranka}{\uwdepa} \\
+    \fi
+    \ifx\uwfocb\undefined {} 
+      \else \boxfoc{\uwfocb}{\uwrankb}{\uwdepb} \\
+    \fi
+    \ifx\uwfocc\undefined {} 
+      \else \boxfoc{\uwfocc}{\uwrankc}{\uwdepc} \\
+    \fi
+    \ifx\uwfocd\undefined {} 
+      \else \boxfoc{\uwfocd}{\uwrankd}{\uwdepd} \\
+    \fi
+    \ifx\uwfoce\undefined {} 
+      \else \boxfoc{\uwfoce}{\uwranke}{\uwdepe} \\
+    \fi
     \ifx\uwfocf\undefined {} 
-      \else \boxfoc{\uwfocf}{\uwrankf} \\
+      \else \boxfoc{\uwfocf}{\uwrankf}{\uwdepf} \\
     \fi
   \end{center}
   \clearpage
@@ -147,7 +147,7 @@
   \begin{center}
     {\Large \textsc{\uwtitle}} \\
     \uwauthor \\
-    Under the supervision of \uwadvisor \\
+    Under the supervision of \uwranka \uwfoca \\
     At the University of Wisconsin--Madison \\
   \end{center}
 
