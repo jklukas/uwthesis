@@ -71,7 +71,8 @@
 \newcommand{\thetitlepage}{%
   \thispagestyle{empty}
   \begin{center}
-    \textsc{\Large \uwtitle}\\
+    \vfill
+    {\Large\sc\uwtitle\par}
     \vfill
     \emph{by} \\ 
     \uwauthor \\
@@ -105,6 +106,7 @@
     \ifx\uwfocf\undefined {} 
       \else \boxfoc{\uwfocf}{\uwrankf}{\uwdepf} \\
     \fi
+    \vfill
   \end{center}
   \clearpage
 }
