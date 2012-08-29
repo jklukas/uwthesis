@@ -24,3 +24,7 @@ This style file is designed to conform to all UW--Madison regulations as laid ou
 * [A Guide to Preparing Your Doctoral Dissertation](http://www.grad.wisc.edu/education/completedegree/pguide.html)
 
 The styles should be current as of spring 2012, including the new guidelines for electronic deposit and a combined title/committee page.  Note that some of the documentation on the above pages was conflicting at the time of writing this package.
+
+## Examples
+
+Check [the Examples page on the Wiki](https://github.com/jklukas/uwthesis/wiki/Examples) to see how others have fit this package into real projects.
